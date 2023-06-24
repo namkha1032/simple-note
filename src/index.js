@@ -19,7 +19,8 @@ const reducer = combineReducers({
   filter: filterReducer
 })
 // create store
-const store = createStore(reducer)
+const store = createStore(reducer, /* preloadedState, */
++  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 // const store = configureStore({
 //   reducer: {
