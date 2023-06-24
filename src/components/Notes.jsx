@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { toggleImportanceOf } from '../reducers/noteReducer'
+// import { toggleImportanceOf } from '../reducers/noteReducer'
 
+// import noteReducer, { createNote, toggleImportanceOf } from '../reducers/noteReducer'
+import noteSlice from '../reducers/noteReducer'
 const Note = ({ note, handleClick }) => {
     return (
         <li onClick={handleClick}>
@@ -9,6 +11,9 @@ const Note = ({ note, handleClick }) => {
         </li>
     )
 }
+
+// console.log("store at index: ", store)
+// console.log("store.getState() at index: ", store.getState)
 
 const Notes = () => {
     const dispatch = useDispatch()
@@ -20,10 +25,6 @@ const Notes = () => {
             ? state.notes.filter(note => note.important)
             : state.notes.filter(note => !note.important)
     })
-    // functions
-    const toggleImportance = (id) => {
-        dispatch(toggleImportanceOf(id))
-    }
 
     return (
         <ul>
@@ -31,7 +32,7 @@ const Notes = () => {
                 <Note
                     key={note.id}
                     note={note}
-                    handleClick={() => toggleImportance(note.id)}
+                    handleClick={() => dispatch(noteSlice.actions.toggleImportanceOf(note.id))}
                 />
             )}
         </ul>

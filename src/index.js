@@ -7,33 +7,34 @@ import { configureStore } from '@reduxjs/toolkit'
 // import component
 import App from './App'
 // import reducer
-import noteReducer from './reducers/noteReducer'
-import filterReducer from './reducers/filterReducer'
+import noteSlice from './reducers/noteReducer'
+import filterSlice from './reducers/filterReducer'
 // import test
-import { createNote } from './reducers/noteReducer'
-import { filterChange } from './reducers/filterReducer'
+// import { createNote } from './reducers/noteReducer'
+// import { filterChange } from './reducers/filterReducer'
 /////////////////////////////////////////////////////////
-// combine reducers
-const reducer = combineReducers({
-  notes: noteReducer,
-  filter: filterReducer
-})
-// create store
-const store = createStore(reducer)
-
-// const store = configureStore({
-//   reducer: {
-//     notes: noteReducer,
-//     filter: filterReducer
-//   }
+// // combine reducers
+// const reducer = combineReducers({
+//   notes: noteReducer,
+//   filter: filterReducer
 // })
+// // create store
+// const store = createStore(reducer)
 
+const store = configureStore({
+  reducer: {
+    notes: noteSlice.reducer,
+    filter: filterSlice.reducer
+  }
+})
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
     <App />
   </Provider>
 )
 
+// console.log("store at index: ", store)
+// console.log("store.getState() at index: ", store.getState)
 // test some action
 // console.log("----------test action--------------")
 // console.log(store.getState())

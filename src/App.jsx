@@ -1,4 +1,4 @@
-import { createNote, toggleImportanceOf } from './reducers/noteReducer'
+// import { createNote, toggleImportanceOf } from './reducers/noteReducer'
 import { useSelector, useDispatch } from 'react-redux'
 
 //import component

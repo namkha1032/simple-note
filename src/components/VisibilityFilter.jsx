@@ -1,6 +1,6 @@
-import { filterChange } from '../reducers/filterReducer'
+// import { filterChange } from '../reducers/filterReducer'
 import { useDispatch } from 'react-redux'
-
+import filterSlice from '../reducers/filterReducer'
 const VisibilityFilter = (props) => {
     const dispatch = useDispatch()
 
@@ -9,17 +9,17 @@ const VisibilityFilter = (props) => {
             <input
                 type="radio"
                 name="filter"
-                onChange={() => dispatch(filterChange('ALL'))}
+                onChange={() => dispatch(filterSlice.actions.filterChange('ALL'))}
             /><label>all</label><br/>
             <input
                 type="radio"
                 name="filter"
-                onChange={() => dispatch(filterChange('IMPORTANT'))}
+                onChange={() => dispatch(filterSlice.actions.filterChange('IMPORTANT'))}
             /><label>important</label><br/>
             <input
                 type="radio"
                 name="filter"
-                onChange={() => dispatch(filterChange('NONIMPORTANT'))}
+                onChange={() => dispatch(filterSlice.actions.filterChange('NONIMPORTANT'))}
             /><label>non-important</label><br/>
         </>
     )
